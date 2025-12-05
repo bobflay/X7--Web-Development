@@ -4476,8 +4476,452 @@
         </div>
     </div>
 
+    <!-- Slide: Introduction to API Authentication -->
+    <div class="slide">
+        <h2>API Authentication with Laravel Sanctum</h2>
+
+        <div style="background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%); padding: 35px; border-radius: 12px; margin-bottom: 30px; border: 2px solid #EF4444;">
+            <h3 style="color: #DC2626; text-align: center; margin-bottom: 25px;">🔐 Why API Authentication?</h3>
+
+            <div style="background: white; padding: 30px; border-radius: 10px; margin-bottom: 25px;">
+                <p style="color: #334155; font-size: 1.2em; line-height: 1.8; margin-bottom: 20px;">
+                    <strong style="color: #DC2626;">API Authentication</strong> ensures that only authorized users can access your API endpoints.
+                    Laravel Sanctum provides a simple, lightweight authentication system for SPAs, mobile apps, and simple token-based APIs.
+                </p>
+
+                <div style="background: #FEF2F2; padding: 25px; border-radius: 10px; border-left: 5px solid #EF4444;">
+                    <h4 style="color: #DC2626; margin-bottom: 15px;">🎯 Use Cases:</h4>
+                    <ul style="color: #334155; font-size: 1.05em; line-height: 2; list-style-position: inside;">
+                        <li>User registration and login</li>
+                        <li>Protecting API endpoints (e.g., only authenticated users can book events)</li>
+                        <li>Mobile app authentication</li>
+                        <li>Token-based API access</li>
+                        <li>User-specific data retrieval</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%); padding: 35px; border-radius: 12px; margin-bottom: 30px; border: 2px solid #0EA5E9;">
+            <h3 style="color: #0369A1; text-align: center; margin-bottom: 25px;">🔑 What is Laravel Sanctum?</h3>
+
+            <div style="background: white; padding: 30px; border-radius: 10px; margin-bottom: 25px;">
+                <p style="color: #334155; font-size: 1.1em; line-height: 1.8; margin-bottom: 20px;">
+                    <strong style="color: #0EA5E9;">Laravel Sanctum</strong> provides a featherweight authentication system for SPAs and mobile applications.
+                    It allows you to issue API tokens to users without the complexity of OAuth.
+                </p>
+
+                <div style="background: #F0F9FF; padding: 25px; border-radius: 10px; border-left: 5px solid #0EA5E9;">
+                    <h4 style="color: #0369A1; margin-bottom: 15px;">How Sanctum Works:</h4>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+                        <div style="background: white; padding: 20px; border-radius: 10px; border: 3px solid #3B82F6; min-width: 180px; text-align: center;">
+                            <div style="font-size: 2em; margin-bottom: 10px;">👤</div>
+                            <strong style="color: #3B82F6;">1. Login</strong><br>
+                            <span style="color: #64748B; font-size: 0.9em;">User sends credentials</span>
+                        </div>
+                        <div style="font-size: 2em; color: #0EA5E9;">→</div>
+                        <div style="background: white; padding: 20px; border-radius: 10px; border: 3px solid #22C55E; min-width: 180px; text-align: center;">
+                            <div style="font-size: 2em; margin-bottom: 10px;">🔑</div>
+                            <strong style="color: #22C55E;">2. Token</strong><br>
+                            <span style="color: #64748B; font-size: 0.9em;">Server generates token</span>
+                        </div>
+                        <div style="font-size: 2em; color: #0EA5E9;">→</div>
+                        <div style="background: white; padding: 20px; border-radius: 10px; border: 3px solid #F59E0B; min-width: 180px; text-align: center;">
+                            <div style="font-size: 2em; margin-bottom: 10px;">📡</div>
+                            <strong style="color: #F59E0B;">3. Request</strong><br>
+                            <span style="color: #64748B; font-size: 0.9em;">Use token for API calls</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%); padding: 35px; border-radius: 12px; border: 2px solid #8B5CF6;">
+            <h3 style="color: #6B21A8; text-align: center; margin-bottom: 25px;">📦 Sanctum vs Other Auth Methods</h3>
+
+            <div style="background: white; padding: 30px; border-radius: 10px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                    <div style="background: #F5F3FF; padding: 20px; border-radius: 8px; border-left: 4px solid #8B5CF6;">
+                        <h5 style="color: #8B5CF6; margin-bottom: 10px;">Laravel Sanctum</h5>
+                        <ul style="color: #64748B; font-size: 0.9em; line-height: 1.8; list-style-position: inside;">
+                            <li>✅ Simple & lightweight</li>
+                            <li>✅ Token-based</li>
+                            <li>✅ Perfect for mobile apps</li>
+                            <li>✅ Built into Laravel</li>
+                        </ul>
+                    </div>
+                    <div style="background: #EFF6FF; padding: 20px; border-radius: 8px; border-left: 4px solid #3B82F6;">
+                        <h5 style="color: #3B82F6; margin-bottom: 10px;">Laravel Passport</h5>
+                        <ul style="color: #64748B; font-size: 0.9em; line-height: 1.8; list-style-position: inside;">
+                            <li>⚡ Full OAuth2 server</li>
+                            <li>⚡ Complex setup</li>
+                            <li>⚡ Third-party auth</li>
+                            <li>⚡ More features</li>
+                        </ul>
+                    </div>
+                    <div style="background: #FFFBEB; padding: 20px; border-radius: 8px; border-left: 4px solid #F59E0B;">
+                        <h5 style="color: #F59E0B; margin-bottom: 10px;">Session Auth</h5>
+                        <ul style="color: #64748B; font-size: 0.9em; line-height: 1.8; list-style-position: inside;">
+                            <li>🌐 For web apps only</li>
+                            <li>🌐 Uses cookies</li>
+                            <li>🌐 Stateful</li>
+                            <li>🌐 Not for mobile</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="color: #6B21A8; font-size: 1.05em; margin-top: 20px; text-align: center; font-weight: bold;">
+                    For XPass mobile app + API → Use Sanctum!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide: Installing and Configuring Sanctum -->
+    <div class="slide">
+        <h2>Setting Up Laravel Sanctum</h2>
+
+        <div style="background: linear-gradient(135deg, #DCFCE7 0%, #BBF7D0 100%); padding: 35px; border-radius: 12px; margin-bottom: 30px; border: 2px solid #22C55E;">
+            <h3 style="color: #16A34A; text-align: center; margin-bottom: 25px;">📦 Step 1: Install Sanctum</h3>
+
+            <div style="background: white; padding: 25px; border-radius: 10px; margin-bottom: 25px;">
+                <h4 style="color: #16A34A; margin-bottom: 15px;">Install via Composer</h4>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 1em; margin-bottom: 15px;">
+                    composer require laravel/sanctum
+                </div>
+                <p style="color: #64748B; font-size: 1em;">
+                    <strong style="color: #16A34A;">Note:</strong> Sanctum is included by default in Laravel 11+
+                </p>
+            </div>
+
+            <div style="background: white; padding: 25px; border-radius: 10px; margin-bottom: 25px;">
+                <h4 style="color: #16A34A; margin-bottom: 15px;">Publish Configuration</h4>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 1em; margin-bottom: 15px;">
+                    php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+                </div>
+                <p style="color: #64748B; font-size: 1em;">
+                    Creates: <code style="background: #DCFCE7; padding: 3px 8px; border-radius: 4px; color: #15803D;">config/sanctum.php</code>
+                </p>
+            </div>
+
+            <div style="background: white; padding: 25px; border-radius: 10px;">
+                <h4 style="color: #16A34A; margin-bottom: 15px;">Run Migrations</h4>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 1em; margin-bottom: 15px;">
+                    php artisan migrate
+                </div>
+                <p style="color: #64748B; font-size: 1em;">
+                    Creates the <code style="background: #DCFCE7; padding: 3px 8px; border-radius: 4px; color: #15803D;">personal_access_tokens</code> table for storing API tokens
+                </p>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%); padding: 35px; border-radius: 12px; margin-bottom: 30px; border: 2px solid #3B82F6;">
+            <h3 style="color: #1E40AF; text-align: center; margin-bottom: 25px;">⚙️ Step 2: Configure the User Model</h3>
+
+            <div style="background: white; padding: 25px; border-radius: 10px;">
+                <h4 style="color: #3B82F6; margin-bottom: 15px;">Add HasApiTokens Trait</h4>
+                <p style="color: #64748B; font-size: 1.05em; margin-bottom: 15px;">
+                    <strong>app/Models/User.php</strong>
+                </p>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 25px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; line-height: 1.6;">
+                    <span style="color: #C084FC;">&lt;?php</span><br><br>
+
+                    <span style="color: #94a3b8;">namespace</span> <span style="color: #FCD34D;">App\\Models</span>;<br><br>
+
+                    <span style="color: #94a3b8;">use</span> <span style="color: #FCD34D;">Illuminate\\Foundation\\Auth\\User</span> <span style="color: #F472B6;">as</span> <span style="color: #FCD34D;">Authenticatable</span>;<br>
+                    <span style="color: #94a3b8;">use</span> <span style="color: #FCD34D;">Illuminate\\Notifications\\Notifiable</span>;<br>
+                    <span style="color: #94a3b8;">use</span> <span style="color: #FCD34D;">Laravel\\Sanctum\\HasApiTokens</span>;&nbsp;&nbsp;<span style="color: #94a3b8;">// Add this import</span><br><br>
+
+                    <span style="color: #F472B6;">class</span> <span style="color: #60A5FA;">User</span> <span style="color: #F472B6;">extends</span> <span style="color: #FCD34D;">Authenticatable</span><br>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F472B6;">use</span> <span style="color: #FCD34D;">HasApiTokens</span>, <span style="color: #FCD34D;">Notifiable</span>;&nbsp;&nbsp;<span style="color: #94a3b8;">// Add HasApiTokens trait</span><br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F472B6;">protected</span> $fillable = [<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'name'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'email'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'password'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;];<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F472B6;">protected</span> $hidden = [<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'password'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'remember_token'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;];<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F472B6;">protected</span> $casts = [<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'email_verified_at'</span> => <span style="color: #A7F3D0;">'datetime'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'password'</span> => <span style="color: #A7F3D0;">'hashed'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;];<br>
+                    }
+                </div>
+                <div style="background: #EFF6FF; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 5px solid #3B82F6;">
+                    <h5 style="color: #1E40AF; margin-bottom: 10px;">🔑 What HasApiTokens Does:</h5>
+                    <ul style="color: #334155; font-size: 1em; line-height: 2; list-style-position: inside;">
+                        <li>Adds methods to create API tokens: <code style="background: #DBEAFE; padding: 2px 6px; border-radius: 3px;">createToken()</code></li>
+                        <li>Manages token abilities and permissions</li>
+                        <li>Provides token revocation: <code style="background: #DBEAFE; padding: 2px 6px; border-radius: 3px;">tokens()->delete()</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); padding: 35px; border-radius: 12px; border: 2px solid #F59E0B;">
+            <h3 style="color: #D97706; text-align: center; margin-bottom: 25px;">🛡️ Step 3: Protect Routes with Sanctum</h3>
+
+            <div style="background: white; padding: 25px; border-radius: 10px;">
+                <h4 style="color: #D97706; margin-bottom: 15px;">Add Sanctum Middleware to API Routes</h4>
+                <p style="color: #64748B; font-size: 1.05em; margin-bottom: 15px;">
+                    <strong>routes/api.php</strong>
+                </p>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 25px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.95em; line-height: 1.6;">
+                    <span style="color: #C084FC;">&lt;?php</span><br><br>
+
+                    <span style="color: #94a3b8;">use</span> <span style="color: #FCD34D;">Illuminate\\Support\\Facades\\Route</span>;<br><br>
+
+                    <span style="color: #94a3b8;">// Public routes (no authentication required)</span><br>
+                    <span style="color: #FCD34D;">Route</span>::get(<span style="color: #A7F3D0;">'/events'</span>, [<span style="color: #FCD34D;">EventController</span>::<span style="color: #F472B6;">class</span>, <span style="color: #A7F3D0;">'index'</span>]);<br><br>
+
+                    <span style="color: #94a3b8;">// Protected routes (authentication required)</span><br>
+                    <span style="color: #FCD34D;">Route</span>::middleware(<span style="color: #A7F3D0;">'auth:sanctum'</span>)->group(function () {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #FCD34D;">Route</span>::post(<span style="color: #A7F3D0;">'/bookings'</span>, [<span style="color: #FCD34D;">BookingController</span>::<span style="color: #F472B6;">class</span>, <span style="color: #A7F3D0;">'store'</span>]);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #FCD34D;">Route</span>::get(<span style="color: #A7F3D0;">'/my-bookings'</span>, [<span style="color: #FCD34D;">BookingController</span>::<span style="color: #F472B6;">class</span>, <span style="color: #A7F3D0;">'myBookings'</span>]);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #FCD34D;">Route</span>::post(<span style="color: #A7F3D0;">'/logout'</span>, [<span style="color: #FCD34D;">AuthController</span>::<span style="color: #F472B6;">class</span>, <span style="color: #A7F3D0;">'logout'</span>]);<br>
+                    });
+                </div>
+                <div style="background: #FFFBEB; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <p style="color: #78716C; font-size: 1em; line-height: 1.8;">
+                        <strong style="color: #D97706;">auth:sanctum</strong> middleware ensures only authenticated users with valid tokens can access these routes.
+                        Without a valid token, requests will receive a <code style="background: #FEF3C7; padding: 2px 6px; border-radius: 3px;">401 Unauthorized</code> response.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide: Creating Authentication Controller -->
+    <div class="slide">
+        <h2>Building the Authentication API</h2>
+
+        <div style="background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%); padding: 35px; border-radius: 12px; margin-bottom: 30px; border: 2px solid #22C55E;">
+            <h3 style="color: #16A34A; text-align: center; margin-bottom: 25px;">👤 Create Authentication Controller</h3>
+
+            <div style="background: white; padding: 25px; border-radius: 10px; margin-bottom: 25px;">
+                <h4 style="color: #16A34A; margin-bottom: 15px;">Generate Controller</h4>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 1em;">
+                    php artisan make:controller Api/AuthController
+                </div>
+            </div>
+
+            <div style="background: white; padding: 25px; border-radius: 10px;">
+                <h4 style="color: #16A34A; margin-bottom: 15px;">Implement Register Method</h4>
+                <p style="color: #64748B; font-size: 1.05em; margin-bottom: 15px;">
+                    <strong>app/Http/Controllers/Api/AuthController.php</strong>
+                </p>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 25px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.85em; line-height: 1.6;">
+                    <span style="color: #F472B6;">public function</span> <span style="color: #60A5FA;">register</span>(<span style="color: #FCD34D;">Request</span> $request)<br>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// Validate input</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$validated = $request->validate([<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'name'</span> => <span style="color: #A7F3D0;">'required|string|max:255'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'email'</span> => <span style="color: #A7F3D0;">'required|email|unique:users,email'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'password'</span> => <span style="color: #A7F3D0;">'required|string|min:8|confirmed'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;]);<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// Create user (password automatically hashed)</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$user = <span style="color: #FCD34D;">User</span>::create([<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'name'</span> => $validated[<span style="color: #A7F3D0;">'name'</span>],<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'email'</span> => $validated[<span style="color: #A7F3D0;">'email'</span>],<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'password'</span> => <span style="color: #FCD34D;">Hash</span>::make($validated[<span style="color: #A7F3D0;">'password'</span>]),<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;]);<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// Create API token</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$token = $user->createToken(<span style="color: #A7F3D0;">'auth_token'</span>)->plainTextToken;<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// Return user and token</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F472B6;">return</span> response()->json([<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'success'</span> => <span style="color: #FCD34D;">true</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'message'</span> => <span style="color: #A7F3D0;">'User registered successfully'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'user'</span> => $user,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'token'</span> => $token,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;], <span style="color: #FCD34D;">201</span>);<br>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%); padding: 35px; border-radius: 12px; margin-bottom: 30px; border: 2px solid #3B82F6;">
+            <h3 style="color: #1E40AF; text-align: center; margin-bottom: 25px;">🔐 Implement Login Method</h3>
+
+            <div style="background: white; padding: 25px; border-radius: 10px;">
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 25px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.85em; line-height: 1.6;">
+                    <span style="color: #F472B6;">public function</span> <span style="color: #60A5FA;">login</span>(<span style="color: #FCD34D;">Request</span> $request)<br>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// Validate credentials</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$credentials = $request->validate([<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'email'</span> => <span style="color: #A7F3D0;">'required|email'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'password'</span> => <span style="color: #A7F3D0;">'required|string'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;]);<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// Attempt authentication</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F472B6;">if</span> (!<span style="color: #FCD34D;">Auth</span>::attempt($credentials)) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F472B6;">return</span> response()->json([<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'success'</span> => <span style="color: #FCD34D;">false</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'message'</span> => <span style="color: #A7F3D0;">'Invalid credentials'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;], <span style="color: #FCD34D;">401</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// Get authenticated user</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$user = <span style="color: #FCD34D;">Auth</span>::user();<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// Create token</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$token = $user->createToken(<span style="color: #A7F3D0;">'auth_token'</span>)->plainTextToken;<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F472B6;">return</span> response()->json([<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'success'</span> => <span style="color: #FCD34D;">true</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'message'</span> => <span style="color: #A7F3D0;">'Login successful'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'user'</span> => $user,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'token'</span> => $token,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;]);<br>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%); padding: 35px; border-radius: 12px; border: 2px solid #EF4444;">
+            <h3 style="color: #DC2626; text-align: center; margin-bottom: 25px;">🚪 Implement Logout Method</h3>
+
+            <div style="background: white; padding: 25px; border-radius: 10px;">
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 25px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; line-height: 1.6;">
+                    <span style="color: #F472B6;">public function</span> <span style="color: #60A5FA;">logout</span>(<span style="color: #FCD34D;">Request</span> $request)<br>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// Delete current token</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$request->user()->currentAccessToken()->delete();<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F472B6;">return</span> response()->json([<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'success'</span> => <span style="color: #FCD34D;">true</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'message'</span> => <span style="color: #A7F3D0;">'Logged out successfully'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;]);<br>
+                    }<br><br>
+
+                    <span style="color: #94a3b8;">// Optional: Delete all user tokens</span><br>
+                    <span style="color: #F472B6;">public function</span> <span style="color: #60A5FA;">logoutAll</span>(<span style="color: #FCD34D;">Request</span> $request)<br>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// Delete all tokens for this user</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$request->user()->tokens()->delete();<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F472B6;">return</span> response()->json([<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'success'</span> => <span style="color: #FCD34D;">true</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'message'</span> => <span style="color: #A7F3D0;">'Logged out from all devices'</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;]);<br>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide: Defining Auth Routes and Testing -->
+    <div class="slide">
+        <h2>Authentication Routes & Testing</h2>
+
+        <div style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%); padding: 35px; border-radius: 12px; margin-bottom: 30px; border: 2px solid #8B5CF6;">
+            <h3 style="color: #6B21A8; text-align: center; margin-bottom: 25px;">🛣️ Define Authentication Routes</h3>
+
+            <div style="background: white; padding: 25px; border-radius: 10px;">
+                <h4 style="color: #8B5CF6; margin-bottom: 15px;">routes/api.php</h4>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 25px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.95em; line-height: 1.6;">
+                    <span style="color: #C084FC;">&lt;?php</span><br><br>
+
+                    <span style="color: #94a3b8;">use</span> <span style="color: #FCD34D;">App\\Http\\Controllers\\Api\\AuthController</span>;<br>
+                    <span style="color: #94a3b8;">use</span> <span style="color: #FCD34D;">Illuminate\\Support\\Facades\\Route</span>;<br><br>
+
+                    <span style="color: #94a3b8;">// Public authentication routes</span><br>
+                    <span style="color: #FCD34D;">Route</span>::post(<span style="color: #A7F3D0;">'/register'</span>, [<span style="color: #FCD34D;">AuthController</span>::<span style="color: #F472B6;">class</span>, <span style="color: #A7F3D0;">'register'</span>]);<br>
+                    <span style="color: #FCD34D;">Route</span>::post(<span style="color: #A7F3D0;">'/login'</span>, [<span style="color: #FCD34D;">AuthController</span>::<span style="color: #F472B6;">class</span>, <span style="color: #A7F3D0;">'login'</span>]);<br><br>
+
+                    <span style="color: #94a3b8;">// Protected routes (require authentication)</span><br>
+                    <span style="color: #FCD34D;">Route</span>::middleware(<span style="color: #A7F3D0;">'auth:sanctum'</span>)->group(function () {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #FCD34D;">Route</span>::post(<span style="color: #A7F3D0;">'/logout'</span>, [<span style="color: #FCD34D;">AuthController</span>::<span style="color: #F472B6;">class</span>, <span style="color: #A7F3D0;">'logout'</span>]);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #FCD34D;">Route</span>::get(<span style="color: #A7F3D0;">'/user'</span>, function (<span style="color: #FCD34D;">Request</span> $request) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F472B6;">return</span> $request->user();<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;});<br>
+                    });
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #FEF9C3 0%, #FDE68A 100%); padding: 35px; border-radius: 12px; margin-bottom: 30px; border: 2px solid #EAB308;">
+            <h3 style="color: #854D0E; text-align: center; margin-bottom: 25px;">🧪 Testing the Authentication API</h3>
+
+            <div style="background: white; padding: 25px; border-radius: 10px; margin-bottom: 25px;">
+                <h4 style="color: #854D0E; margin-bottom: 15px;">1. Register a New User</h4>
+                <div style="background: #FFFBEB; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                    <p style="color: #334155; margin-bottom: 10px;"><strong>POST</strong> <code style="background: #FEF3C7; padding: 3px 8px; border-radius: 4px;">http://localhost:8000/api/register</code></p>
+                </div>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; line-height: 1.6; margin-bottom: 15px;">
+                    <span style="color: #94a3b8;">// Request Body (JSON)</span><br>
+                    {<br>
+                    &nbsp;&nbsp;<span style="color: #A7F3D0;">"name"</span>: <span style="color: #A7F3D0;">"John Doe"</span>,<br>
+                    &nbsp;&nbsp;<span style="color: #A7F3D0;">"email"</span>: <span style="color: #A7F3D0;">"john@example.com"</span>,<br>
+                    &nbsp;&nbsp;<span style="color: #A7F3D0;">"password"</span>: <span style="color: #A7F3D0;">"password123"</span>,<br>
+                    &nbsp;&nbsp;<span style="color: #A7F3D0;">"password_confirmation"</span>: <span style="color: #A7F3D0;">"password123"</span><br>
+                    }
+                </div>
+                <div class="code-block" style="background: #1E293B; color: #22C55E; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.85em; line-height: 1.6;">
+                    <span style="color: #94a3b8;">// Response (201 Created)</span><br>
+                    {<br>
+                    &nbsp;&nbsp;<span style="color: #A7F3D0;">"success"</span>: <span style="color: #FCD34D;">true</span>,<br>
+                    &nbsp;&nbsp;<span style="color: #A7F3D0;">"message"</span>: <span style="color: #A7F3D0;">"User registered successfully"</span>,<br>
+                    &nbsp;&nbsp;<span style="color: #A7F3D0;">"user"</span>: {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">"id"</span>: <span style="color: #FCD34D;">1</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">"name"</span>: <span style="color: #A7F3D0;">"John Doe"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">"email"</span>: <span style="color: #A7F3D0;">"john@example.com"</span><br>
+                    &nbsp;&nbsp;},<br>
+                    &nbsp;&nbsp;<span style="color: #A7F3D0;">"token"</span>: <span style="color: #A7F3D0;">"1|abcdef123456..."</span><br>
+                    }
+                </div>
+            </div>
+
+            <div style="background: white; padding: 25px; border-radius: 10px; margin-bottom: 25px;">
+                <h4 style="color: #854D0E; margin-bottom: 15px;">2. Login with Credentials</h4>
+                <div style="background: #FFFBEB; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                    <p style="color: #334155; margin-bottom: 10px;"><strong>POST</strong> <code style="background: #FEF3C7; padding: 3px 8px; border-radius: 4px;">http://localhost:8000/api/login</code></p>
+                </div>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; line-height: 1.6;">
+                    <span style="color: #94a3b8;">// Request Body</span><br>
+                    {<br>
+                    &nbsp;&nbsp;<span style="color: #A7F3D0;">"email"</span>: <span style="color: #A7F3D0;">"john@example.com"</span>,<br>
+                    &nbsp;&nbsp;<span style="color: #A7F3D0;">"password"</span>: <span style="color: #A7F3D0;">"password123"</span><br>
+                    }
+                </div>
+            </div>
+
+            <div style="background: white; padding: 25px; border-radius: 10px;">
+                <h4 style="color: #854D0E; margin-bottom: 15px;">3. Access Protected Route</h4>
+                <div style="background: #FFFBEB; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                    <p style="color: #334155; margin-bottom: 10px;"><strong>GET</strong> <code style="background: #FEF3C7; padding: 3px 8px; border-radius: 4px;">http://localhost:8000/api/user</code></p>
+                    <p style="color: #DC2626; font-weight: bold; margin-top: 10px;">⚠️ Must include Authorization header:</p>
+                </div>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em;">
+                    Authorization: Bearer 1|abcdef123456...
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #DCFCE7 0%, #BBF7D0 100%); padding: 30px; border-radius: 12px; border: 2px solid #22C55E;">
+            <h3 style="color: #16A34A; text-align: center; margin-bottom: 20px;">💡 Best Practices</h3>
+            <div style="background: white; padding: 25px; border-radius: 10px;">
+                <ul style="color: #334155; font-size: 1.05em; line-height: 2.2; list-style-position: inside;">
+                    <li><strong style="color: #16A34A;">Always validate input</strong> - Use Laravel validation rules</li>
+                    <li><strong style="color: #16A34A;">Hash passwords</strong> - Use <code style="background: #DCFCE7; padding: 2px 6px; border-radius: 3px;">Hash::make()</code> or cast to 'hashed'</li>
+                    <li><strong style="color: #16A34A;">Use HTTPS</strong> - Tokens should never be sent over HTTP</li>
+                    <li><strong style="color: #16A34A;">Set token expiration</strong> - Configure in config/sanctum.php</li>
+                    <li><strong style="color: #16A34A;">Implement rate limiting</strong> - Prevent brute force attacks</li>
+                    <li><strong style="color: #16A34A;">Store tokens securely</strong> - Never expose in client-side code</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="slide-counter">
-        <span id="current-slide">1</span> / <span id="total-slides">32</span>
+        <span id="current-slide">1</span> / <span id="total-slides">36</span>
     </div>
 
     <div class="navigation">
