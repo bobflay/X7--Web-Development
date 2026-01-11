@@ -4920,8 +4920,126 @@
         </div>
     </div>
 
+    <!-- Slide: Using auth() Function to Retrieve User Data -->
+    <div class="slide">
+        <h2>Using auth() to Retrieve User Data</h2>
+
+        <div style="background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%); padding: 35px; border-radius: 12px; margin-bottom: 30px; border: 2px solid #0EA5E9;">
+            <h3 style="color: #0369A1; text-align: center; margin-bottom: 25px;">🔐 The auth() Helper Function</h3>
+
+            <div style="background: white; padding: 25px; border-radius: 10px; margin-bottom: 20px;">
+                <p style="color: #334155; font-size: 1.1em; line-height: 1.8; text-align: center;">
+                    Laravel provides the <code style="background: #E0F2FE; padding: 4px 10px; border-radius: 5px; font-weight: bold;">auth()</code> helper function to easily access the authenticated user anywhere in your application.
+                </p>
+            </div>
+
+            <div style="background: white; padding: 25px; border-radius: 10px;">
+                <h4 style="color: #0EA5E9; margin-bottom: 15px;">Basic Usage</h4>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 25px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.95em; line-height: 1.8;">
+                    <span style="color: #94a3b8;">// Check if user is authenticated</span><br>
+                    <span style="color: #F472B6;">if</span> (<span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">check</span>()) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// User is logged in</span><br>
+                    }<br><br>
+
+                    <span style="color: #94a3b8;">// Get the currently authenticated user</span><br>
+                    <span style="color: #FCD34D;">$user</span> = <span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">user</span>();<br><br>
+
+                    <span style="color: #94a3b8;">// Get the authenticated user's ID</span><br>
+                    <span style="color: #FCD34D;">$userId</span> = <span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">id</span>();
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #FDF4FF 0%, #FAE8FF 100%); padding: 35px; border-radius: 12px; margin-bottom: 30px; border: 2px solid #D946EF;">
+            <h3 style="color: #A21CAF; text-align: center; margin-bottom: 25px;">📋 Accessing User Properties</h3>
+
+            <div style="background: white; padding: 25px; border-radius: 10px; margin-bottom: 20px;">
+                <h4 style="color: #D946EF; margin-bottom: 15px;">Get User Information</h4>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 25px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.95em; line-height: 1.8;">
+                    <span style="color: #94a3b8;">// Get user object and access properties</span><br>
+                    <span style="color: #FCD34D;">$user</span> = <span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">user</span>();<br><br>
+
+                    <span style="color: #FCD34D;">$name</span> = <span style="color: #FCD34D;">$user</span>->name;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// "John Doe"</span><br>
+                    <span style="color: #FCD34D;">$email</span> = <span style="color: #FCD34D;">$user</span>->email;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #94a3b8;">// "john@example.com"</span><br>
+                    <span style="color: #FCD34D;">$createdAt</span> = <span style="color: #FCD34D;">$user</span>->created_at;<br><br>
+
+                    <span style="color: #94a3b8;">// Direct property access (shorthand)</span><br>
+                    <span style="color: #FCD34D;">$email</span> = <span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">user</span>()->email;
+                </div>
+            </div>
+
+            <div style="background: white; padding: 25px; border-radius: 10px;">
+                <h4 style="color: #D946EF; margin-bottom: 15px;">Using in Controllers</h4>
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 25px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.95em; line-height: 1.8;">
+                    <span style="color: #F472B6;">public function</span> <span style="color: #60A5FA;">profile</span>()<br>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #F472B6;">return</span> response()->json([<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'id'</span> => <span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">id</span>(),<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'name'</span> => <span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">user</span>()->name,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #A7F3D0;">'email'</span> => <span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">user</span>()->email,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;]);<br>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px;">
+            <div style="background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); padding: 25px; border-radius: 12px; border: 2px solid #F59E0B;">
+                <h3 style="color: #B45309; text-align: center; margin-bottom: 20px;">⚡ auth() vs $request->user()</h3>
+                <div style="background: white; padding: 20px; border-radius: 10px;">
+                    <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; line-height: 1.8;">
+                        <span style="color: #94a3b8;">// Both are equivalent!</span><br><br>
+                        <span style="color: #FCD34D;">$user</span> = <span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">user</span>();<br><br>
+                        <span style="color: #FCD34D;">$user</span> = $request-><span style="color: #60A5FA;">user</span>();
+                    </div>
+                    <p style="color: #334155; margin-top: 15px; font-size: 0.95em; text-align: center;">
+                        Use <code style="background: #FEF3C7; padding: 2px 6px; border-radius: 3px;">auth()</code> anywhere<br>
+                        Use <code style="background: #FEF3C7; padding: 2px 6px; border-radius: 3px;">$request->user()</code> in controllers
+                    </p>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #DCFCE7 0%, #BBF7D0 100%); padding: 25px; border-radius: 12px; border: 2px solid #22C55E;">
+                <h3 style="color: #16A34A; text-align: center; margin-bottom: 20px;">🛡️ Using with Sanctum Guard</h3>
+                <div style="background: white; padding: 20px; border-radius: 10px;">
+                    <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; line-height: 1.8;">
+                        <span style="color: #94a3b8;">// Specify the sanctum guard</span><br><br>
+                        <span style="color: #FCD34D;">$user</span> = <span style="color: #60A5FA;">auth</span>(<span style="color: #A7F3D0;">'sanctum'</span>)-><span style="color: #60A5FA;">user</span>();<br><br>
+                        <span style="color: #94a3b8;">// Check if authenticated</span><br>
+                        <span style="color: #60A5FA;">auth</span>(<span style="color: #A7F3D0;">'sanctum'</span>)-><span style="color: #60A5FA;">check</span>();
+                    </div>
+                    <p style="color: #334155; margin-top: 15px; font-size: 0.95em; text-align: center;">
+                        Explicitly use <code style="background: #DCFCE7; padding: 2px 6px; border-radius: 3px;">'sanctum'</code> guard<br>
+                        when working with API tokens
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%); padding: 30px; border-radius: 12px; border: 2px solid #EF4444;">
+            <h3 style="color: #DC2626; text-align: center; margin-bottom: 20px;">⚠️ Important: Null Safety</h3>
+            <div style="background: white; padding: 25px; border-radius: 10px;">
+                <div class="code-block" style="background: #1E293B; color: #E2E8F0; padding: 25px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.95em; line-height: 1.8;">
+                    <span style="color: #94a3b8;">// ❌ May cause error if user not authenticated</span><br>
+                    <span style="color: #FCD34D;">$name</span> = <span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">user</span>()->name;<br><br>
+
+                    <span style="color: #94a3b8;">// ✅ Safe approach - check first</span><br>
+                    <span style="color: #F472B6;">if</span> (<span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">check</span>()) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #FCD34D;">$name</span> = <span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">user</span>()->name;<br>
+                    }<br><br>
+
+                    <span style="color: #94a3b8;">// ✅ Or use optional helper</span><br>
+                    <span style="color: #FCD34D;">$name</span> = <span style="color: #60A5FA;">optional</span>(<span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">user</span>())->name;<br><br>
+
+                    <span style="color: #94a3b8;">// ✅ Or use null safe operator (PHP 8+)</span><br>
+                    <span style="color: #FCD34D;">$name</span> = <span style="color: #60A5FA;">auth</span>()-><span style="color: #60A5FA;">user</span>()?->name;
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="slide-counter">
-        <span id="current-slide">1</span> / <span id="total-slides">36</span>
+        <span id="current-slide">1</span> / <span id="total-slides">37</span>
     </div>
 
     <div class="navigation">
